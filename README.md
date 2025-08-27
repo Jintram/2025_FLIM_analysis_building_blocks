@@ -5,7 +5,7 @@
 Set up the following environment to run this script:
 
 ```
-conda create -n 2025_FLIM2 numpy matplotlib seaborn pandas scikit-image scipy opencv -y
+conda create -n 2025_FLIM2 -c conda-forge numpy matplotlib seaborn pandas scikit-image scipy opencv ipython -y 
 conda activate 2025_FLIM2
 python -m pip install -U "ptufile[all]"
 ```
@@ -34,3 +34,31 @@ ptu.number_bins_in_period # the amount of bins the time window is divided in
 
 For more information, see the `reading_FLIM_image.py` example script.
 An example image is provided in the `example_data` directory.
+
+# A note about "flimtools"
+
+Sometimes people in our lab have used the "flimtools" package (https://github.com/jayunruh/FLIM_tools) to calculate G, S coordinates for a FLIM decay curve. E.g. by using the function:
+
+```
+def calcGS(profile,pshift,mscale,harmonic=1):
+    plen=len(profile)
+    pshiftscale=pshift*plen/360.0
+    return [(mscale*np.cos(2.0*np.pi*harmonic*(np.arange(plen)-pshiftscale)/plen)*profile).sum()/profile.sum(),
+            (mscale*np.sin(2.0*np.pi*harmonic*(np.arange(plen)-pshiftscale)/plen)*profile).sum()/profile.sum()]
+```
+
+The "pshift" argument is very important, it shifts the curve in time to align the peak to t=0,
+which is crucial to a proper G, S coordinate calcualation.
+Counter-intuitively, the pshift argument has units of degrees, going from 0-360 degrees,
+where 0 corresponds to t=0, and 360 to the total period.
+I'm not sure this is documented somewhere, but it can be seen from the above code.
+
+## Notes to self
+
+*(Please ignore this section.)*
+
+<font color=grey>
+
+Some convenient files:
+- /Users/m.wehrens/Documents/PROJECTS/_Documentation_and_theory/tex_FLIM/Some_math_behind_FLIM.pdf
+</font>
