@@ -12,13 +12,17 @@ python -m pip install -U "ptufile[all]"
 
 # Reading ptu data
 
-The file `reading_FLIM_image.py` is an example script that shows how to read a ptu file.
+The file `reading_FLIM_image.py` is an example script that shows how to read a ptu file. (It's based on a previous example script I wrote for a course.)
 
 To correctly process the image, you'll need to know technical details about the measurement, such as the measurement period and number of bins.
-These can be read out with the `ptufile` package by Christoph Gohlke, see code snippet below.
-It's also convenient to use the `dtime=0` setting to make sure the array size is consistent with the number of bins.
+These can be read out with the `ptufile` package by Christoph Gohlke, see code snippet below. I also recommend this package for reading in the ptufiles to python arrays.
 
+Importantly, when importing data with `ptufile`, it's convenient to use the `dtime=0` setting to make sure the array size is consistent with the number of bins.
+
+Code snippet:
 ```
+import ptufile as pf
+
 # Read in the file of interest
 ptu_im = pf.imread(MYFILEPATH, dtime=0)[0,:,:,:,:] # reading it this way ensures that the number of bins is correct
     # [0,:,:,:,:] throws out the first dimensions, which we don't need
@@ -32,8 +36,9 @@ ptu.global_resolution # the time window the measurement covers
 ptu.number_bins_in_period # the amount of bins the time window is divided in
 ```
 
-For more information, see the `reading_FLIM_image.py` example script.
+For more information, see the `reading_FLIM_image.py` example script (from which this code snippet is lifted).
 An example image is provided in the `example_data` directory.
+
 
 # A note about "flimtools"
 
