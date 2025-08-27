@@ -39,6 +39,7 @@ ptu.number_bins_in_period # the amount of bins the time window is divided in
 For more information, see the `reading_FLIM_image.py` example script (from which this code snippet is lifted).
 An example image is provided in the `example_data` directory.
 
+See my [discussion with Christoph](https://github.com/cgohlke/ptufile/issues/1), his [ptufile](https://github.com/cgohlke/ptufile/) repo and his [other repos](https://github.com/cgohlke/) (such as PhasorPy).
 
 # A note about "flimtools"
 
