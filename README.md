@@ -14,7 +14,7 @@ python -m pip install -U "ptufile[all]"
 
 The file `reading_FLIM_image.py` is an example script that shows how to read a ptu file. (It's based on a previous example script I wrote for a course.)
 
-To correctly process the image, you'll need to know technical details about the measurement, such as the measurement period and number of bins.
+To correctly process the image, you'll need to know technical details about the measurement, such as the measurement period and number of bins that correspond to the actual measurement.
 These can be read out with the `ptufile` package by Christoph Gohlke, see code snippet below. I also recommend this package for reading in the ptufiles to python arrays.
 
 Importantly, when importing data with `ptufile`, it's convenient to use the `dtime=0` setting to make sure the array size is consistent with the number of bins.
